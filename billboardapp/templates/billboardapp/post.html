@@ -1,0 +1,93 @@
+{% extends 'billboardapp/base.html' %} 
+
+{% block content %}
+    
+        {% if posts != None %}
+
+            {% for post in posts %}
+
+            <!--container for messages-->
+            <div class="messages-container" id="{{ post.id }}">
+
+                <!--container for a specific post-->
+                <div class="post-box">
+                    {% if user.is_authenticated %}
+                        {% ifequal user post.user%}
+                            <!--delete button-->
+                            <p class="delete-container" alt="{{ post.id }}">-</p>
+                        {% endifequal %}
+                    {% endif %}
+
+                    <!--post title-->
+                    <p class="post-title">{{ post.title }}</p>
+
+                    <!--post content-->
+                    <p class="post-text"> {{ post.text }}</p>
+
+                    <div class="comments-container container">
+                        <p class="comment-title">Comments</p>
+
+                        {% for comment in post.comments_set.all %}
+                            {% ifequal comment.visible 1 %}
+
+                                <div class="comment-box" alt="{{comment.id}}">
+                                    <p class="comment-text"><span class="user-comment">{{comment.author}} : </span>{{comment.text_comment}}</p>
+
+                                    {% ifequal user.username comment.author %}
+                                        <p class="delete-button" alt="{{comment.id}}">Delete</p>
+                                    {% else %}
+                                        <p class="delete-button"></p>
+                                    {% endifequal %}
+                                </div>
+
+                            {% endifequal %}
+                        {% endfor %}
+                        
+                        {% if user.is_authenticated %}
+                        <!--container for one adding comment-->
+                        <div class="comment-input-box">
+                            
+                            <form method="POST" class="post-comment-form" id="new-comment-form-{{ post.id }}" alt="{{ post.id }}">
+                                {% csrf_token %} 
+                                {{ commentform.as_p}}
+                                <input class="submit-comment-button" value="Send" type="submit" name="submitcomment"></<input>
+                            </form>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+        {% endif %}
+
+        {% if user.is_authenticated %}
+         <!-- ================================= CONTAINER FOR FORM AREA ========================================= -->
+        <div id="input-container">
+
+            <!--container for a specific post-->
+            <div class="post-box">
+                 <!--container for testing forms-->
+                <form method="POST" class="post-form" id="new-post-form">
+                    {% csrf_token %} 
+                    {{ form.as_p}}
+                </form>
+            </div>
+        </div>
+
+
+        <div id="confirm-message-container">
+            <div class="container-buttons">
+                <button id="button-cancel" type="button" class="btn btn-default red"><i class="fa fa-times" aria-hidden="true"></i></button>
+                <button id="button-confirm" type="button" class="btn btn-default"><i class="fa fa-check" aria-hidden="true"></i></button>
+            </div>
+        </div>
+
+        <div id="addmessage-container">
+            <button id="button-add" type="button" class="btn btn-default"><i class="fa fa-plus" aria-hidden="true"></i></button>
+        </div>
+        
+        {% endif %}
+        
+
+{% endblock %}

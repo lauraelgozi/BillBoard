@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Billboard</title>
+
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!--import google font-->
+    <link href="https://fonts.googleapis.com/css?family=Anton|Pinyon+Script|Poiret+One" rel="stylesheet">
+
+    <!--import font awsome CDN-->
+    <script src="https://use.fontawesome.com/b3365a06fb.js"></script>
+
+
+    <!--styleshee file file-->
+    <link rel="stylesheet" type="text/css" href="../css/billboardStyling.css">
+
+
+
+</head>
+<body>
+
+    <!--main container for applicaiton-->
+    <div id="app-container" class="container">
+
+        <!--container for header-->
+        <div id="header" class="container">
+
+            <h1 id="billboard-title">BILLBOARD</h1>
+
+        </div>
+
+        <!--container for messages-->
+        <div id="message-container">
+
+            <!--container for a specific post-->
+            <div class="post-box">
+
+                <!--delete button-->
+                <p class="delete-container">-</p>
+
+
+                <!--post title-->
+                <p class="post-title">This is the post title</p>
+
+                <!--container for all user comments-->
+                <div class="comments-container container">
+
+                    <p class="comment-title">Comments</p>
+
+                    <!--container for one specific comment-->
+                    <div class="comment-box">
+                        <p class="comment-text"><span class="user-comment"></span>This is the text for one comment</p>
+                        <p class="delete-button">Delete</p>
+                    </div>
+
+                    <!--container for one specific comment-->
+                    <div class="comment-box">
+                        <p class="comment-text"><span class="user-comment"> </span></p>
+                        <p class="delete-button">Delete</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+          <!--container for Input-->
+        <div id="input-container">
+
+            <!--container for a specific post-->
+            <div class="post-box">
+
+                <div class="container-title">
+                    <input type="text" placeholder="Title" class="input title-input">
+                </div>
+                <div class="container-content">
+                    <textarea class= "message-input" placeholder="Your message here" name="message" rows="10" cols="30"></textarea>
+                </div>
+
+                <div class="container-author">
+                    <input type="text" placeholder="Author" class="input author-input">
+                </div>
+            </div>
+        </div>
+
+
+        <!--container add message-->
+        <div id="addmessage-container">
+            <button type="button" class="btn btn-default"><i class="fa fa-plus" aria-hidden="true"></i></button>
+        </div>
+
+        <!--container confirm message-->
+        <div id="confirm-message-container">
+            <div class="container-buttons">
+                <button type="button" class="btn btn-default red"><i class="fa fa-times" aria-hidden="true"></i></button>
+                <button type="button" class="btn btn-default"><i class="fa fa-check" aria-hidden="true"></i></button>
+            </div>
+        </div>
+
+
+    </div>
+</body>
+</html>
